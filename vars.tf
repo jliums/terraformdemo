@@ -7,5 +7,5 @@ variable "storage_account_name" {
 # Input variable: Name of Storage container
 variable "container_name" {
   description = "The name of the Blob Storage container."
-  default     = "storagecontainer01"
+  default     = "storagecontainer02"
 }
