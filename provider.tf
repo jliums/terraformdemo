@@ -27,5 +27,5 @@ terraform {
 
 provider "azurerm" {
   features {}
-  resource_provider_registrations = "core"
+  # resource_provider_registrations = "core"
 }
