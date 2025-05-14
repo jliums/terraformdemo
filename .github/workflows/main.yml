@@ -28,12 +28,12 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ./
+        # working-directory: ./
 
     steps:
-    # # Checkout the repository to the GitHub Actions runner
-    # - name: Checkout
-    #   uses: actions/checkout@v3
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v3
 
     - uses: azure/login@v2
       with:
