@@ -1,6 +1,10 @@
 # Input variable: Name of Storage Account
-variable "resource_group" {
+variable "resource_group_name" {
   default = "terraform_rg"
+}
+
+variable "resource_group_location" {
+  default = "northeurope"
 }
 
 variable "storage_account_name" {
