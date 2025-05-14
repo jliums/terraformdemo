@@ -1,6 +1,6 @@
 # Create a Resource Group if it doesn’t exist
 resource "azurerm_resource_group" "resource_group" {
-  name     = "terraform_rg"
+  name     = "terraform_rg_2"
   location = "northeurope"
 }
 
