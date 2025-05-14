@@ -20,6 +20,6 @@ resource "azurerm_storage_account" "terraform_sa" {
 # Create a Storage container
 resource "azurerm_storage_container" "terraform_state" {
   name                  = var.container_name
-  storage_account_name  = azurerm_storage_account.terraform_state.name
+  storage_account_name  = azurerm_storage_account.terraform_sa.name
   container_access_type = "private"
 }
