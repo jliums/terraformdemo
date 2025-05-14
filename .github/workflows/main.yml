@@ -15,7 +15,8 @@ permissions:
 jobs:
   terraform:
     name: 'Terraform'
-    # env: 
+    env: 
+      CONFIG_DIRECTORY: "./"
     #   AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
     #   AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
     #   AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
@@ -27,6 +28,7 @@ jobs:
     defaults:
       run:
         shell: bash
+        working-directory: root_dir
 
     steps:
     # # Checkout the repository to the GitHub Actions runner
@@ -60,7 +62,7 @@ jobs:
     - name: Terraform Plan
       run: terraform plan -input=false
 
-     # On push to "master", build or change infrastructure according to Terraform configuration files
+     # On push to "main", build or change infrastructure according to Terraform configuration files
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve -input=false
