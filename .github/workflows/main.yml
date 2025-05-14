@@ -28,7 +28,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: root_dir
+        working-directory: ./
 
     steps:
     # # Checkout the repository to the GitHub Actions runner
