@@ -1,9 +1,3 @@
-# Create a Resource Group if it doesn’t exist
-resource "azurerm_resource_group" "resource_group" {
-  name     = "terraform_rg_2"
-  location = "northeurope"
-}
-
 # Create a Storage account
 resource "azurerm_storage_account" "terraform_sa" {
   name                     = var.storage_account_name
