@@ -9,15 +9,10 @@ on:
     branches: [ "main" ]
   pull_request:
 
-permissions:
-  contents: read
-
 jobs:
   terraform:
     name: 'Terraform'
-    env: 
-      CONFIG_DIRECTORY: "./"
-      AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+    environment: test
     runs-on: ubuntu-latest
 
 
@@ -31,21 +26,21 @@ jobs:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
       uses: actions/checkout@v3
-
+      
+    # Install the latest version of Terraform CLI 
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      
     - uses: azure/login@v2
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Azure CLI script
-      uses: azure/cli@v2
-      with:
-        azcliversion: latest
-        inlineScript: |
-          az account show
-
-    # Install the latest version of Terraform CLI 
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1
+#    - name: Azure CLI script
+ #     uses: azure/cli@v2
+  #    with:
+   #     azcliversion: latest
+    #    inlineScript: |
+     #     az account show
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
@@ -57,7 +52,7 @@ jobs:
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform plan -input=false
+      run: terraform plan
       env:
         AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
